@@ -1,6 +1,9 @@
 package kafka
 
-import ckafka "github.com/confluentinc/confluent-kafka-go/kafka"
+import (
+	ckafka "github.com/confluentinc/confluent-kafka-go/kafka"
+	"github.com/vellone-fabricio/imersao5-gateway/adapter/presenter"
+)
 
 type Producer struct {
 	ConfigMap *ckafka.ConfigMap
