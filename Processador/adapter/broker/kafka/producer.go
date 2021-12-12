@@ -19,4 +19,27 @@ func (p *Producer) Publish(msg interface{}, key []byte, topic string) error {
 	if err != nil {
 		return err
 	}
+
+	err = p.Presenter.Bind(msg)
+	if err != nil {
+		return err
+	}
+
+	presenterMsg, err := p.Presenter.Show()
+	if err != nil {
+		return err
+	}
+
+	message := &ckafka.Message{
+		TopicPartition: ckafka.TopicPartition{Topic: &topic, Partition: ckafka.PartitionAny},
+		Value:          presenterMsg,
+		Key:            key,
+	}
+
+	err = producer.Produce(message, nil)
+	if err != nil {
+		return err
+	}
+
+	return nil
 }
