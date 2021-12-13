@@ -22,7 +22,7 @@ export class Order extends Model {
   id: string;
 
   @Column({ allowNull: false, type: DataType.DECIMAL(10, 2) })
-  amout: number;
+  amount: number;
 
   @Column({ allowNull: false })
   credit_card_number: string;
