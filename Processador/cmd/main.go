@@ -25,7 +25,7 @@ func main() {
 
 	// configMapProducer
 	configMapProducer := &ckafka.ConfigMap{
-		"bootstrap.servers": "kafka:9092",
+		"bootstrap.servers": "host.docker.internal:9094",
 	}
 
 	// Producer
@@ -35,7 +35,7 @@ func main() {
 	var msgChan = make(chan *ckafka.Message)
 	//Configmap Consumer
 	configMapConsumer := &ckafka.ConfigMap{
-		"bootstrap.servers": "kafka:9092",
+		"bootstrap.servers": "host.docker.internal:9094",
 		"client.id":         "goapp",
 		"group.id":          "goapp",
 	}
